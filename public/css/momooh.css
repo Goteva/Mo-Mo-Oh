@@ -1,0 +1,370 @@
+body {
+    font-size: .875rem;
+}
+
+body pre{
+    margin-left: 275px;
+}
+
+span.hr{
+    width: 100%;
+    border: 1px solid black;
+    height: 1px;
+    display: block;
+}
+
+header .fa-icon{
+    height: 27px;
+    margin-top: -7px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.fa-icon, .feather{
+    margin-right: 4px;
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+
+.fa-icon .fa-secondary {
+    opacity: 0.4;
+}
+
+.fa-icon .fa-primary {
+    opacity: 1;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+/*
+* Sidebar
+*/
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    /* rtl:raw:
+    right: 0;
+    */
+    bottom: 0;
+    /* rtl:remove */
+    left: 0;
+    z-index: 100; /* Behind the navbar */
+    padding: 48px 0 0; /* Height of navbar */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        top: 5rem;
+    }
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #727272;
+}
+
+.sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #727272;
+}
+
+.sidebar .nav-link.active {
+    color: #2470dc;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+    color: inherit;
+}
+
+.sidebar-heading {
+    font-size: .75rem;
+    text-transform: uppercase;
+}
+
+/*
+* Navbar
+*/
+
+.navbar-brand {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, .25);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar .navbar-toggler {
+    top: .25rem;
+    right: 1rem;
+}
+
+.navbar .form-control {
+    padding: .75rem 1rem;
+    border-width: 0;
+    border-radius: 0;
+}
+
+.nav-pills.nav-startfilters .nav-link{
+    padding: 0.2rem 0.2rem;
+}
+
+/*
+* Form
+*/
+
+.form-control-dark {
+    color: #fff;
+    background-color: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+
+img.cover-anime{
+    width: 300px;
+    object-fit: cover;
+    height: 300px;
+}
+
+img.cover-anime-miniature {
+    width: 35px;
+    object-fit: cover;
+    height: 35px;
+}
+
+.fa-pro{
+    vertical-align: unset;
+    height: 16px;
+    width: 16px;    
+}
+
+/*
+ * cards yu-gi-oh
+ */
+
+.cards.table .picture{
+    height: 14px;
+    margin: 4px 5px;
+    vertical-align: bottom;
+}
+
+.card {
+    overflow: hidden;
+}
+
+.card.cards{
+    height: 441px !important;
+    border : 8px solid #151026;
+}
+.card.cards .null{
+    font-size: 10px;
+    font-style: italic;
+}
+
+.card-body {
+    padding: 0 2%;
+}
+
+.cards.Monster-Fusion{
+    background: #8f4ca0;
+}
+.cards.Monster-Fusion.Pendulum {
+    background: rgb(143,76,160);
+    background: linear-gradient(180deg, rgba(143,76,160,1) 0%, rgba(143,76,160,1) 45%, rgba(240,203,249,1) 50%, rgba(27,128,126,1) 55%, rgba(27,128,126,1) 100%);
+}
+
+.cards.Monster-Effect{
+    background: rgb(181,84,38);
+}
+.cards.Monster-Effect.Pendulum {
+    background: rgb(143,76,160);
+    background: linear-gradient(180deg, rgba(181,84,38,1) 0%, rgba(181,84,38,1) 45%, rgba(237,159,122,1) 50%, rgba(27,128,126,1) 55%, rgba(27,128,126,1) 100%);
+}
+
+.cards.Monster-Ritual{
+    background: #476fb7;
+}
+
+.cards.Monster-Synchro{
+    background: #dfdcd9;
+}
+.cards.Monster-Synchro.Pendulum {
+    background: rgb(223,220,217);
+    background: linear-gradient(180deg, rgba(223,220,217,1) 0%, rgba(223,220,217,1) 45%, rgba(255,255,255,1) 50%, rgba(27,128,126,1) 55%, rgba(27,128,126,1) 100%);}
+
+.cards.Monster-XYZ{
+    background: #121010;
+}
+.cards.Monster-XYZ.Pendulum{
+    background: rgb(18,16,16);
+    background: linear-gradient(180deg, rgba(18,16,16,1) 0%, rgba(18,16,16,1) 45%, rgba(104,102,102,1) 50%, rgba(27,128,126,1) 55%, rgba(27,128,126,1) 100%);
+}
+.cards.Monster-XYZ .card-title, .cards.Monster-XYZ .card-title *, .cards.Monster-XYZ .cards-level *{
+    color: white !important;
+}
+
+.cards.Monster-Link{
+    background:#124d85;
+}
+
+.cards.Monster-Normal.Ra{
+    background: #9f9052;
+}
+.cards.Monster-Normal.Obelisk{
+    background: #425c7e;
+}
+.cards.Monster-Normal.Slifer{
+    background: #99524e;
+}
+.cards.Monster-Normal{
+    background: rgb(201 164 100);
+}
+.cards.Monster-Normal.Pendulum{
+    background: rgb(201 164 100);
+    background: linear-gradient(180deg, rgb(201 164 100) 0%, rgb(201 164 100) 45%, rgb(243 210 153) 50%, rgba(27,128,126,1) 55%, rgba(27,128,126,1) 100%);
+}
+
+.cards.Trap-Normal,
+.cards.Trap-Continuous,
+.cards.Trap-Counter{
+    background: #a61c71;
+}
+
+.cards.Spell-Normal,
+.cards.Spell-Continuous,
+.cards.Spell-Equip,
+.cards.Spell-Quick-Play,
+.cards.Spell-Ritual,
+.cards.Spell-Field{
+    background: #018570;
+}
+
+
+.cards .card-title{
+    padding: 5px;
+    margin: 2% 2% 0 2%;
+    font-size: x-small;
+    font-weight: bold;
+
+    border-top-color: rgb(245 245 245 / 25%);
+    border-top-width: 3px;
+    border-top-style: solid;
+
+    border-left-color: rgb(245 245 245 / 25%);
+    border-left-width: 3px;
+    border-left-style: solid;
+
+    border-bottom-color: rgb(0 0 0 / 25%);
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+
+    border-right-color: rgb(0 0 0 / 25%);
+    border-right-width: 2px;
+    border-right-style: solid;
+}
+.cards .card-title a{
+    text-decoration:none;
+    color: black;
+}
+.cards .card-img-top {
+}
+
+.cards.Pendulum .card-img-top{
+    max-height: 193px;
+    object-fit: cover;
+}
+
+.cards .card-img-top-a{
+    width: 96%;
+    object-fit: cover;
+    align-self: center;
+}
+
+.cards .cards-img-attribute{
+    height: 25px;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+
+.cards .cards-img-level{
+    width: 15px;
+    margin-left: -4px;
+}
+.cards-level{
+    text-align: right;
+    padding: 0 2%;
+    margin: 1% 0;
+}
+.cards .card-text{
+    padding: 5px;
+    background: rgb(255 255 255 / 50%);
+    border: 2px double #b67b2f;
+    margin: 15px 0 5px 0;
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 10px);
+    font-size: 0.8rem;
+}
+.cards .card-pendulum{
+    padding: 5px;
+    background: rgb(255 255 255 / 50%);
+    border: 4px solid #4c5664;
+    position: absolute;
+    width: calc(100% - 10px);
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+.cards .atk_def{
+    text-align: right;
+}
+
+/*
+* progress bar
+*/
+
+.progress {
+    border-radius: 0;
+}
+
+.progress-bar-striped-dark{
+    background-image: linear-gradient(45deg,rgba(0,0,0,.15) 25%, transparent 25%,transparent 50%,rgba(0,0,0,.15) 50%,rgba(0,0,0,.15) 75%, transparent 75%, transparent );
+    background-size: 1rem 1rem;
+}
+
+.play-button{
+    position: absolute;
+    left: 125px;
+    top: 125px;
+    height: 50px;
+    opacity: 0.9;
+}
+
+.background-play-button{
+    background: rgba(0,0,0,0.25);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
