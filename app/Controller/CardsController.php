@@ -87,7 +87,7 @@ class CardsController extends AppController
 
             if(isset($_POST['getAPI'])){
                 // chercher les information sur API
-                echo '<pre>'; print_r('add'); echo '</pre>';
+
                 $card = $this->cards->getInfoCardFromApi($_POST['cards_title']);
             }else{
                 $LastInsertId = $this->cards->create([
@@ -108,8 +108,6 @@ class CardsController extends AppController
                 ], false, true);
             }
         }
-
-
         $form = new BootstrapForm($card);
 
         $cards_types = $this->cards->getAllCardsTypes();
@@ -153,8 +151,6 @@ class CardsController extends AppController
 
         $card = $this->cards->getCard($_GET['id']);
         $card->{'image_api_url'} = $this->cards->getImageCardFromApi($card->cards_title, $card->id_cards)['image_url'];
-
-        echo '<pre>'; print_r($card); echo '</pre>';
 
         $form = new BootstrapForm($card);
 

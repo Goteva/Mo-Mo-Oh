@@ -59,10 +59,6 @@ class MysqlDatabase extends Database
     public function prepare($statement, $attributes, $className = null, $list = true, $debug = false)
     {
         $pdoStatement = $this->getPDO()->prepare($statement);
-   
-        if($debug){
-            echo '<pre>'; print_r($pdoStatement->debugDumpParams()); echo '<pre>';
-        }
 
         $results = $pdoStatement->execute($attributes);
 

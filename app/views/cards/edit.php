@@ -1,6 +1,3 @@
-<?php
-echo '<pre>'; print_r($_SESSION); echo '</pre>';
-?>
 <form method="post" class="row g-3 mt-2">
     <div class="col-md-3">
         <div class="form-group">
