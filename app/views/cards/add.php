@@ -101,6 +101,5 @@
         </div>
     </div>
 
-    `cards_tcg_release`, `cards_ocg_release`, `cards_rush_ocg_release`, `cards_speed_release`, `idx_cards_types`, `idx_card_subtypes`, `idx_card_subtypes2`, `idx_card_attributes`, `idx_monsters_types`
     <button class="btn btn-primary">Sauvegarder</button>
 </form>
