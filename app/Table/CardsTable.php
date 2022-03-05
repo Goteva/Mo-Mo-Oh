@@ -92,8 +92,6 @@ class CardsTable extends Table
                      cards.cards_title ASC
             ';
 
-        echo '<pre>'; print_r($sql); echo '</pre>';// die();
-
         $path_cards = './cards/';
 
         $cards = $this->q($sql, false);
