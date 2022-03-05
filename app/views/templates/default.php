@@ -89,6 +89,7 @@ $auth = new DatabaseAuth($app->getDb());
                             Home
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link <?= ($view == 'cards.grid' ? 'active' : '') ?>"
                            href="index.php?p=cards.grid">
@@ -96,91 +97,14 @@ $auth = new DatabaseAuth($app->getDb());
                             Cards
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($view == 'cards.add' ? 'active' : '') ?>"
+                           href="index.php?p=cards.add">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                            Add a new card
+                        </a>
+                    </li>
                 </ul>
-
-                <hr/>
-
-                <?php if ($auth->logged()) { ?>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link  <?= ($view == 'admin.cards.list' ? 'active' : '') ?> px-3"
-                               href="index.php?p=admin.escs.list">
-                                <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="tasks-alt"
-                                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                     class="feather">
-                                    <g class="fa-group">
-                                        <path fill="currentColor"
-                                              d="M488.12 352H23.94A23.94 23.94 0 0 0 0 375.88V456a23.94 23.94 0 0 0 23.88 24h464.18A23.94 23.94 0 0 0 512 456.12V376a23.94 23.94 0 0 0-23.88-24zM464 432H48v-32h416zm24.12-240H23.94A23.94 23.94 0 0 0 0 215.88V296a23.94 23.94 0 0 0 23.88 24h464.18A23.94 23.94 0 0 0 512 296.12V216a23.94 23.94 0 0 0-23.88-24zM464 272H48v-32h416zm24.12-240H23.94A23.94 23.94 0 0 0 0 55.88V136a23.94 23.94 0 0 0 23.88 24h464.18A23.94 23.94 0 0 0 512 136.12V56a23.94 23.94 0 0 0-23.88-24zM464 112H48V80h416z"
-                                              class="fa-secondary"></path>
-                                        <path fill="currentColor"
-                                              d="M48 80v32h304V80zm112 160H48v32h112zM48 432h240v-32H48z"
-                                              class="fa-primary"></path>
-                                    </g>
-                                </svg>
-                                Manages Animes
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  <?= ($view == 'admin.categories.list' ? 'active' : '') ?> px-3"
-                               href="index.php?p=admin.categories.list">
-                                <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="th-list"
-                                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                     class="feather">
-                                    <g class="fa-group">
-                                        <path fill="currentColor"
-                                              d="M488 352H205.33a24 24 0 0 0-24 24v80a24 24 0 0 0 24 24H488a24 24 0 0 0 24-24v-80a24 24 0 0 0-24-24zm0-320H205.33a24 24 0 0 0-24 24v80a24 24 0 0 0 24 24H488a24 24 0 0 0 24-24V56a24 24 0 0 0-24-24zm0 160H205.33a24 24 0 0 0-24 24v80a24 24 0 0 0 24 24H488a24 24 0 0 0 24-24v-80a24 24 0 0 0-24-24z"
-                                              class="fa-secondary"></path>
-                                        <path fill="currentColor"
-                                              d="M125.33 192H24a24 24 0 0 0-24 24v80a24 24 0 0 0 24 24h101.33a24 24 0 0 0 24-24v-80a24 24 0 0 0-24-24zm0-160H24A24 24 0 0 0 0 56v80a24 24 0 0 0 24 24h101.33a24 24 0 0 0 24-24V56a24 24 0 0 0-24-24zm0 320H24a24 24 0 0 0-24 24v80a24 24 0 0 0 24 24h101.33a24 24 0 0 0 24-24v-80a24 24 0 0 0-24-24z"
-                                              class="fa-primary"></path>
-                                    </g>
-                                </svg>
-                                Manages Categories
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  <?= ($view == 'admin.statutes.list' ? 'active' : '') ?> px-3"
-                               href="index.php?p=admin.statutes.list">
-                                <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="badge" role="img"
-                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="feather">
-                                    <g class="fa-group">
-                                        <path fill="currentColor"
-                                              d="M512 256a88 88 0 0 0-57.09-82.41 88 88 0 0 0-116.5-116.5 88 88 0 0 0-164.82 0 88 88 0 0 0-116.5 116.5 88 88 0 0 0 0 164.82 88 88 0 0 0 116.5 116.5 88 88 0 0 0 164.82 0 88 88 0 0 0 116.5-116.5A88 88 0 0 0 512 256zm-122.23 55.42a55.67 55.67 0 0 1-78.36 78.37 55.68 55.68 0 0 1-110.82 0 55.68 55.68 0 0 1-78.36-78.37 55.69 55.69 0 0 1 0-110.84 55.68 55.68 0 0 1 78.36-78.37 55.68 55.68 0 0 1 110.82 0 55.68 55.68 0 0 1 78.36 78.37 55.69 55.69 0 0 1 0 110.84z"
-                                              class="fa-secondary"></path>
-                                        <path fill="currentColor"
-                                              d="M389.77 311.42a55.67 55.67 0 0 1-78.36 78.37 55.68 55.68 0 0 1-110.82 0 55.68 55.68 0 0 1-78.36-78.37 55.69 55.69 0 0 1 0-110.84 55.68 55.68 0 0 1 78.36-78.37 55.68 55.68 0 0 1 110.82 0 55.68 55.68 0 0 1 78.36 78.37 55.69 55.69 0 0 1 0 110.84z"
-                                              class="fa-primary"></path>
-                                    </g>
-                                </svg>
-                                Manages Statutes
-                            </a>
-                        </li>
-                    </ul>
-
-                    <hr/>
-
-                    <a class="nav-link px-3" href="index.php?p=users.logout">
-                        <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="sign-out-alt" role="img"
-                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="feather">
-                            <path fill="currentColor"
-                                  d="M160 217.1c0-8.8 7.2-16 16-16h144v-93.9c0-7.1 8.6-10.7 13.6-5.7l141.6 143.1c6.3 6.3 6.3 16.4 0 22.7L333.6 410.4c-5 5-13.6 1.5-13.6-5.7v-93.9H176c-8.8 0-16-7.2-16-16v-77.7m-32 0v77.7c0 26.5 21.5 48 48 48h112v61.9c0 35.5 43 53.5 68.2 28.3l141.7-143c18.8-18.8 18.8-49.2 0-68L356.2 78.9c-25.1-25.1-68.2-7.3-68.2 28.3v61.9H176c-26.5 0-48 21.6-48 48zM0 112v288c0 26.5 21.5 48 48 48h132c6.6 0 12-5.4 12-12v-8c0-6.6-5.4-12-12-12H48c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16h132c6.6 0 12-5.4 12-12v-8c0-6.6-5.4-12-12-12H48C21.5 64 0 85.5 0 112z"
-                                  class=""></path>
-                        </svg>
-                        Logout
-                    </a>
-
-                <?php } else { ?>
-                    <a class="nav-link <?= ($view == 'users.login' ? 'active' : '') ?> px-3"
-                       href="index.php?p=users.login">
-                        <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="sign-in-alt" role="img"
-                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="feather">
-                            <path fill="currentColor"
-                                  d="M32 217.1c0-8.8 7.2-16 16-16h144v-93.9c0-7.1 8.6-10.7 13.6-5.7l141.6 143.1c6.3 6.3 6.3 16.4 0 22.7L205.6 410.4c-5 5-13.6 1.5-13.6-5.7v-93.9H48c-8.8 0-16-7.2-16-16v-77.7m-32 0v77.7c0 26.5 21.5 48 48 48h112v61.9c0 35.5 43 53.5 68.2 28.3l141.7-143c18.8-18.8 18.8-49.2 0-68L228.2 78.9c-25.1-25.1-68.2-7.3-68.2 28.3v61.9H48c-26.5 0-48 21.6-48 48zM512 400V112c0-26.5-21.5-48-48-48H332c-6.6 0-12 5.4-12 12v8c0 6.6 5.4 12 12 12h132c8.8 0 16 7.2 16 16v288c0 8.8-7.2 16-16 16H332c-6.6 0-12 5.4-12 12v8c0 6.6 5.4 12 12 12h132c26.5 0 48-21.5 48-48z"
-                                  class=""></path>
-                        </svg>
-                        Login
-                    </a>
-                <?php } ?>
             </div>
         </nav>
 
