@@ -36,6 +36,12 @@ class BootstrapForm extends Form
 
     public function select($name, $label, $options, $null = false)
     {
+
+        $vname = $this->getValue($name);
+        if($vname === '0'){
+            $vname = null;
+        }
+
         if($null) {
             $options[''] = "- Aucun -";
         }
@@ -44,7 +50,7 @@ class BootstrapForm extends Form
         $select = '<select class="form-control" name="' . $name . '">';
         foreach ($options as $k => $v) {
             $selected = '';
-            if($k == $this->getValue($name)){ $selected = 'selected '; }
+            if($k == $vname){ $selected = 'selected '; }
             $select .= "<option $selected value='$k'>$v</option>";
         }
         $select .= '</select>';
