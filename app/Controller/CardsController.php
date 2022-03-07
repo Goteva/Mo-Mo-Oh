@@ -87,10 +87,9 @@ class CardsController extends AppController
 
             if(isset($_POST['getAPI'])){
                 // chercher les information sur API
-
                 $card = $this->cards->getInfoCardFromApi($_POST['cards_title']);
             }else{
-                $LastInsertId = $this->cards->create([
+               $LastInsertId = $this->cards->create([
                     'cards_title' => $_POST['cards_title'],
                     'cards_notes' => $_POST['cards_notes'],
                     'cards_level' => $_POST['cards_level'],
@@ -102,6 +101,7 @@ class CardsController extends AppController
                     'cards_rush_ocg_release' => $_POST['cards_rush_ocg_release'],
                     'cards_speed_release' => $_POST['cards_speed_release'],
                     'idx_cards_types' => $_POST['idx_cards_types'],
+                    'idx_monsters_types' => $_POST['idx_monsters_types'],
                     'idx_card_subtypes' => $_POST['idx_card_subtypes'],
                     'idx_card_subtypes2' => $_POST['idx_card_subtypes2'],
                     'idx_card_attributes' => $_POST['idx_card_attributes']
