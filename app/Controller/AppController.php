@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App;
+use Core\HTML\BootstrapForm;
 use Core\Controller\Controller;
 
 class AppController extends Controller{
@@ -18,5 +19,4 @@ class AppController extends Controller{
     {
         $this->$model_name = App::getInstance()->getTable($model_name);
     }
-    
 }

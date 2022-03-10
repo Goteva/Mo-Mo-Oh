@@ -17,6 +17,7 @@ class CardsController extends AppController
     public function index()
     {
         $cards = $this->cards->getAll();
+        $this->cards->migrations();
         $this->render('cards.index', compact('cards'));
     }
 

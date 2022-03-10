@@ -103,5 +103,16 @@ class Table
         return $this->q('DELETE FROM ' . $this->table . ' WHERE ' . $id['name'] . ' = ?', $valuesArray, false, $debug);
     }
 
+    public function migrations_table(){
+        $r = $this->q("SELECT * FROM information_schema.tables WHERE table_schema = 'momooh' AND table_name = 'log_migrations'");
 
+        if(empty($r)){
+            $v = '0';
+        }else{
+            $r = $this->q("SELECT log_migrations_version FROM `log_migrations` ORDER BY `log_migrations`.`log_migrations_version` DESC");
+            $v = $r[0]->log_migrations_version;
+        }
+
+        $this->db->migrations_mysql( $v );
+    }
 }

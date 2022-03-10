@@ -33,6 +33,22 @@ class MysqlDatabase extends Database
         return $this->pdo;
     }
 
+    public function migrations_mysql($version){
+
+        $path = '../core/Database/Migrations/';
+
+        $files = scandir($path);
+
+
+        $lastScript = $files[count($files) - 1];
+        $eLastScript = explode('.', $lastScript);
+
+        for($v = ($version + 1); $v <= $eLastScript[0]; $v++){
+            $sql = file_get_contents($path.$v.'.sql');
+            $pdoStatement = $this->getPDO()->exec($sql);
+        }
+    }
+
     public function query($statement, $className = null, $list = true)
     {
         $pdoStatement = $this->getPDO()->query($statement);

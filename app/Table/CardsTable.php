@@ -220,27 +220,6 @@ class CardsTable extends Table
 
 
         foreach ($cards as $ci => $card) {
-            /*
-            $cards[$ci]->{'api_url'} = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?name=' . urlencode($card->cards_title);
-            $cards[$ci]->{'image_api_url'} = '';
-            $cards[$ci]->{'image_url'} =  '';
-
-            if(!empty($card->cards_image)) {
-                $cards[$ci]->{'image_url'} =  $path_cards . $card->cards_image;
-
-            }else{
-
-                    // get img_url from api
-                    $image_url = $this->getImageCardFromApi($card->cards_title, $card->id_cards)['image_url'];
-
-                    if($image_url != 'error.png') {
-                        $cards[$ci]->{'image_api_url'} = $image_url;
-                    }else{
-                        $cards[$ci]->{'image_api_url'} = 'error.png';
-                    }
-            }
-            */
-
             // calculate date_diff between TCG & OCG
             $tcg_ocg = date_diff(date_create($card->cards_tcg_release), date_create($card->cards_ocg_release));
             $cards[$ci]->{'year_diff_tcg_ocg'} = $tcg_ocg->format("%y");
@@ -300,7 +279,7 @@ class CardsTable extends Table
 
     public function getInfoCardFromApi($card_title){
         $datas = array();
-        $url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?name=' . urlencode($card_title);
+        $url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?name=' . urlencode($card_title) . '&misc=yes';
 
         $ch = curl_init();
         $options = array(
@@ -436,5 +415,9 @@ class CardsTable extends Table
 
         $sql = "SELECT * FROM card_attributes WHERE card_attributes_title LIKE '".$like."'";
         return $this->q($sql, false);
+    }
+
+    public function migrations(){
+        $this->migrations_table();
     }
 }
