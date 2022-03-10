@@ -31,6 +31,30 @@ class CardsController extends AppController
 
     public function grid()
     {
+        $vDB = $this->cards->getDbVersion();
+
+        if(isset($vDB) && !empty($vDB)) {
+            if ($vDB >= 2) {
+                if (isset($_GET['upd_card_img'])) {
+                    $c = $this->cards->getCard($_GET['upd_card_img']);
+                    //update last update date for one card
+                    $cn = $c->cards_notes;
+                    $result = $this->cards->update([
+                        'name' => 'id_cards',
+                        'value' => $_GET['upd_card_img']
+                    ], [
+                        'cards_notes' => $c->cards_notes.'.'
+                    ]);
+
+                    $result = $this->cards->update([
+                        'name' => 'id_cards',
+                        'value' => $_GET['upd_card_img']
+                    ], [
+                        'cards_notes' => $cn
+                    ]);
+                }
+            }
+        }
 
         if(isset($_POST['id_cards_types'])){
             $_SESSION['filter_cards_types'] = $_POST['id_cards_types'];
@@ -63,7 +87,8 @@ class CardsController extends AppController
 
         // like grid cards
         $cards = $this->cards->getAllCards($_SESSION['filter_cards_types'], $_SESSION['filter_card_subtypes'], $_SESSION['filter_card_attributes']);
-        $this->render('cards.grid', compact('cards', 'cards_types', 'monsters_types', 'card_subtypes', 'card_attributes'));
+
+        $this->render('cards.grid', compact('cards', 'cards_types', 'monsters_types', 'card_subtypes', 'card_attributes', 'vDB'));
     }
 
     public function table()
@@ -73,7 +98,6 @@ class CardsController extends AppController
         $this->render('cards.table', compact('cards'));
     }
 
-    // detail
     public function detail()
     {
         $card = $this->cards->getCard(1);

@@ -103,7 +103,7 @@ class Table
         return $this->q('DELETE FROM ' . $this->table . ' WHERE ' . $id['name'] . ' = ?', $valuesArray, false, $debug);
     }
 
-    public function migrations_table(){
+    public function getDbVersion(){
         $r = $this->q("SELECT * FROM information_schema.tables WHERE table_schema = 'momooh' AND table_name = 'log_migrations'");
 
         if(empty($r)){
@@ -113,6 +113,11 @@ class Table
             $v = $r[0]->log_migrations_version;
         }
 
-        $this->db->migrations_mysql( $v );
+        return $v;
+    }
+
+    public function migrations_table(){
+        $vDB = $this->getDbVersion();
+        $this->db->migrations_mysql( $vDB );
     }
 }

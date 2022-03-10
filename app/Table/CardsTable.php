@@ -16,6 +16,7 @@ class CardsTable extends Table
 
     public function getAllCards($filter_cards_types = array(), $filter_card_subtypes = array(), $filter_card_attributes = array())
     {
+        $vDB = $this->getDbVersion();
 
         $where_ = array();
 
@@ -67,7 +68,11 @@ class CardsTable extends Table
             "monsters_types.monsters_types_title"
         );
 
-
+        if(isset($vDB) && !empty($vDB)) {
+            if ($vDB >= 2) {
+                array_push($select, "cards.cards_creation_date", "cards.cards_last_modified_date");
+            }
+        }
 
         $sql = '
             SELECT 
