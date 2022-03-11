@@ -127,7 +127,10 @@
                             ?>
                         </div>
 
-                        <a class="card-img-top-a" href="<?= $card_api_url; ?>">
+                        <a class="card-img-top-a" href="?p=cards.edit&id=<?= $card->id_cards; ?>">
+                            <span style="position: absolute;left: 3px;top: 0;">
+                                <svg onclick="window.open('<?= $card_api_url; ?>')" width="10" height="10" fill="#f8f9fa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"><path d="M160 448h-32V224c0-17.69-14.33-32-32-32L32 192c-17.67 0-32 14.31-32 32s14.33 31.1 32 31.1h32v192H32c-17.67 0-32 14.31-32 32s14.33 32 32 32h128c17.67 0 32-14.31 32-32S177.7 448 160 448zM96 128c26.51 0 48-21.49 48-48S122.5 32.01 96 32.01s-48 21.49-48 48S69.49 128 96 128z"></path></svg>
+                            </span>
 
                             <?php
                             $lastUpdate = '';
@@ -136,7 +139,17 @@
                                     $lastUpdate = '?t='.strtotime($card->cards_last_modified_date);
                                 }
                             }
-                            ?>
+
+                            if(isset($card->owned)){ ?>
+                                <span class="badge bg-success">
+                                    <!--
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path d="M407.6 64h-367C18.5 64 0 82.5 0 104.6v135.2C0 364.5 99.7 464 224.2 464c124 0 223.8-99.5 223.8-224.2V104.6c0-22.4-17.7-40.6-40.4-40.6zm-162 268.5c-12.4 11.8-31.4 11.1-42.4 0C89.5 223.6 88.3 227.4 88.3 209.3c0-16.9 13.8-30.7 30.7-30.7 17 0 16.1 3.8 105.2 89.3 90.6-86.9 88.6-89.3 105.5-89.3 16.9 0 30.7 13.8 30.7 30.7 0 17.8-2.9 15.7-114.8 123.2z"/>
+                                    </svg>
+                                    -->
+                                    <span><?= $card->owned['total_quantity'] ?>x</span>
+                                </span>
+                            <?php } ?>
 
                             <img src="<?= $card->image_url.$lastUpdate ?>" class="card-img-top" alt="...">
                             <svg data-refresh="?p=cards.grid&upd_card_img=<?= $card->id_cards; ?>" class="refresh" width="15" height="15" fill="#f8f9fa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

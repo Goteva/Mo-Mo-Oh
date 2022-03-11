@@ -300,6 +300,13 @@ img.cover-anime-miniature {
     position: relative;
 }
 
+.cards .card-img-top-a .badge{
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    width: initial;
+}
+
 .cards .card-img-top-a .refresh{
     position: absolute;
     bottom: 7px;

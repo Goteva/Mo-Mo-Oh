@@ -45,8 +45,6 @@ class CardsTable extends Table
             }
         }
 
-        //echo '<pre>'; print_r($where_); echo '</pre>'; die();
-
         $select = array(
             "cards.id_cards",
             "cards.cards_title",
@@ -97,17 +95,45 @@ class CardsTable extends Table
                      cards.cards_title ASC
             ';
 
+
         $path_cards = './cards/';
 
         $cards = $this->q($sql, false);
 
         foreach ($cards as $ci => $card) {
+            $owner_cards = $this->getOwnedCardsFromID($card->id_cards);
+
+            if(!empty($owner_cards)){
+                $extension = array();
+                $total_quantity = 0;
+
+                foreach ($owner_cards as $owened){
+                    $total_quantity += $owened->owned_cards_quantity;
+
+                    array_push($extension, array(
+                        'label' => $owened->owned_cards_quantity.'x '.$owened->owned_cards_extension.'-'.$owened->cards_rarity_abbr,
+                        'name' => $owened->owned_cards_extension,
+                        'quantity' => $owened->owned_cards_quantity,
+                        'rarity' => $owened->cards_rarity_abbr
+                    ));
+                }
+
+                $owner = array(
+                    'total_quantity' => $total_quantity,
+                    'extension' => $extension
+                );
+
+                $cards[$ci]->{'owned'} = $owner;
+            }
+
+
+
+
             $cards[$ci]->{'api_url'} = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?name=' . urlencode($card->cards_title);
             $cards[$ci]->{'image_api_url'} = '';
 
             if(!empty($card->cards_image)) {
                 $cards[$ci]->{'image_url'} =  $path_cards . $card->cards_image;
-
             }else{
 
                 $file_crop = $path_cards . $card->id_cards.'-crop.png';
@@ -222,7 +248,6 @@ class CardsTable extends Table
         $path_cards = './cards/';
 
         $cards = $this->q($sql, false);
-
 
         foreach ($cards as $ci => $card) {
             // calculate date_diff between TCG & OCG
@@ -419,6 +444,11 @@ class CardsTable extends Table
         $like = $attributesTitle;
 
         $sql = "SELECT * FROM card_attributes WHERE card_attributes_title LIKE '".$like."'";
+        return $this->q($sql, false);
+    }
+
+    public function getOwnedCardsFromID($id_card){
+        $sql = "SELECT * FROM owned_cards LEFT JOIN cards_rarity ON id_cards_rarity = idx_cards_rarity WHERE idx_cards = ".$id_card;
         return $this->q($sql, false);
     }
 
