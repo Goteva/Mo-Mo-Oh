@@ -107,7 +107,7 @@ class Table
         $r = $this->q("SELECT * FROM information_schema.tables WHERE table_schema = 'momooh' AND table_name = 'log_migrations'");
 
         if(empty($r)){
-            $v = '0';
+            $v = '-1';
         }else{
             $r = $this->q("SELECT log_migrations_version FROM `log_migrations` ORDER BY `log_migrations`.`log_migrations_version` DESC");
             $v = $r[0]->log_migrations_version;

@@ -39,7 +39,6 @@ class MysqlDatabase extends Database
 
         $files = scandir($path);
 
-
         $lastScript = $files[count($files) - 1];
         $eLastScript = explode('.', $lastScript);
 
